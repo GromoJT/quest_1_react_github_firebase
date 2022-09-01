@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import {db} from '../../firebaseConfig';
 
 
-
+function refreshPage() {
+    
+}
 
 const InsertEntry = () =>{
 
@@ -12,10 +14,11 @@ const InsertEntry = () =>{
 
     const [newEntry,setNewEntry] = useState("");
     
-
+    
 
     const createEntry = async() =>{
         await addDoc(entriesCollectionRef,{text:newEntry,time: new Date()});
+        window.location.reload(false);
     }
 
     return(
