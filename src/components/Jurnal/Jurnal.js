@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react";
 import {db} from '../../firebaseConfig';
-import {collection, getDocs, Timestamp,deleteDoc,doc} from 'firebase/firestore'
+import {collection, getDocs, deleteDoc,doc} from 'firebase/firestore'
 
 
 
