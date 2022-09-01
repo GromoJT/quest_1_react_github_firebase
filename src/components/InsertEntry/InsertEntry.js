@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import {collection, addDoc} from 'firebase/firestore'
 import React, { useState } from 'react';
 import {db} from '../../firebaseConfig';
@@ -18,10 +19,10 @@ const InsertEntry = () =>{
     }
 
     return(
-        <div>
-            <input placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
+        <Box >
+            <textarea style={{maxWidth:'95%',marginTop:5}} rows="4" color='50' placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
             <button onClick={createEntry}>Save</button>
-        </div>
+        </Box>
     );
 }
 export default InsertEntry;

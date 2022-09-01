@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
 import {db} from '../../firebaseConfig';
 import {collection, getDocs, deleteDoc,doc} from 'firebase/firestore'
-
+import { Box, Grid } from "@mui/material";
+import {styled} from "@mui/system"
 
 
 const Jurnal = () =>{
@@ -30,18 +31,28 @@ const Jurnal = () =>{
 
   return(
     <div>
+      
         {entries.map((entry)=>{
           return (
-          <div key={entry.id}>
-            <h1>{entry.text}</h1>
-            <button onClick={()=>{deleteEntry(entry.id)}}>Delete entry</button>
-            <span>
+          
+          <Box  key={entry.id} sx={{color:"white",bgcolor:'#333333',marginBottom:3,borderRadius:10,padding:1}}>
+
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <p>"{entry.text}"</p>
+              </Grid>
+              <Grid item xs={3}>
+                <button onClick={()=>{deleteEntry(entry.id)}}>Delete entry</button>
+              </Grid>
+              <Grid item xs={9}>
+              <span>
               {
                 entry.time.toDate().toString()  
               }
               </span>
-
-          </div>
+              </Grid>
+            </Grid>
+          </Box>
           )
       })}
     </div>
