@@ -30,6 +30,8 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+      env:
+          CI: false
     - name: Archive Build
       uses: actions/upload-artifact@v3
       with:
