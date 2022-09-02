@@ -23,7 +23,7 @@ const InsertEntry = () =>{
 
     return(
         <Box >
-            <textarea style={{maxWidth:'95%',marginTop:5}} rows="4" color='50' placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
+            <textarea style={{minWidth:'75%',maxWidth:'95%',marginTop:5}} rows="4" color='150' placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
             <button onClick={createEntry}>Save</button>
         </Box>
     );
