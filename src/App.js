@@ -1,27 +1,22 @@
 import './App.css';
 import React from 'react';
-import Jurnal from './components/Jurnal/Jurnal';
-import InsertEntry from './components/InsertEntry/InsertEntry';
-import { Box, Grid } from '@mui/material';
+import Counter from './features/counter/components/Counter/Counter';
 
 function App() {
 
 
 
   return (
-    <div className="App">
+    <main className="App">
       
-      <Grid container spacing={2}>
-        <Grid item xs={4} >
-          <InsertEntry sx={{position: "sticky"}}/>
-        </Grid>
-        <Grid item xs={8}>
-          <Jurnal/>
-        </Grid>
-      </Grid>
+      <Counter />
+      <div>
+            <h2>Pracuje nad połaczeniem firestore wraz z Reduxem... ale jeszcze mam z tym problem...<br />
+                Na razie mam zwykły licznik którey z niego korzysta...
+            </h2>
+        </div>
       
-      
-    </div>
+    </main>
   );
 }
 
