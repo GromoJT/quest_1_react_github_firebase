@@ -17,14 +17,22 @@ const InsertEntry = () =>{
     
 
     const createEntry = async() =>{
-        await addDoc(entriesCollectionRef,{text:newEntry,time: new Date()});
+        if(newEntry.length>0){
+            await addDoc(entriesCollectionRef,{text:newEntry,time: new Date()});
+            window.location.reload(false);
+        }
+        
+    }
+    const createEntryCat = async() =>{
+        await addDoc(entriesCollectionRef,{text:"Kitten!",time: new Date()});
         window.location.reload(false);
     }
 
     return(
         <Box >
-            <textarea style={{minWidth:'75%',maxWidth:'95%',marginTop:5}} rows="4" color='150' placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
+            <textarea  style={{minWidth:'75%',maxWidth:'95%',marginTop:5}} rows="4" color='150' placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
             <button onClick={createEntry}>Save</button>
+            <button onClick={createEntryCat}>Add cat</button>
         </Box>
     );
 }

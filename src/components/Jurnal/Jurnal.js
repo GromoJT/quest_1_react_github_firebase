@@ -1,8 +1,20 @@
 import React,{useState,useEffect} from "react";
 import {db} from '../../firebaseConfig';
 import {collection, getDocs, deleteDoc,doc} from 'firebase/firestore'
-import { Box, Grid } from "@mui/material";
-import {styled} from "@mui/system"
+import { Box, Button, Grid } from "@mui/material";
+import { styled } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import ButtonBase from '@mui/material/ButtonBase';
+
+
+
+const Img = styled('img')({
+  margin: 'auto',
+  display: 'block',
+  maxWidth: '100%',
+  maxHeight: '100%',
+});
 
 
 const Jurnal = () =>{
@@ -30,7 +42,53 @@ const Jurnal = () =>{
   },[])
 
   return(
-    <div>
+   //HERE
+   <Paper
+      sx={{
+        p:1,
+        backgroundColor:'#333333'
+      }}
+    >
+      {entries.map((entry)=>{
+          return (
+      <Grid key={entry.id}  container spacing={2} sx={{marginBottom:5,color:'white'}}>
+        <Grid item>
+          <ButtonBase sx={{ width: 128, height: 128 }}>
+            <Img alt="picture" src="https://thispersondoesnotexist.com/image" />
+          </ButtonBase>
+        </Grid>
+        <Grid item xs={12} sm container>
+          <Grid item xs container direction="column" spacing={2}>
+            <Grid item xs>
+              <Typography gutterBottom variant="subtitle1" component="div">
+                Entry
+              </Typography>
+              <Typography variant="h3" gutterBottom >
+              "{entry.text}"
+              </Typography>
+              <Typography variant="body2" color="#999999">
+              {entry.time.toDate().toString()} 
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography sx={{ cursor: 'pointer' }} variant="body2">
+              <Button onClick={()=>{deleteEntry(entry.id)}}>Delete entry</Button>
+              </Typography>
+              <hr/>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      )
+    })}
+    </Paper>
+  );
+}
+
+export default Jurnal;
+
+/*
+ <div>
       
         {entries.map((entry)=>{
           return (
@@ -56,7 +114,5 @@ const Jurnal = () =>{
           )
       })}
     </div>
-  );
-}
 
-export default Jurnal;
+    */
