@@ -20,11 +20,16 @@ const InsertEntry = () =>{
         await addDoc(entriesCollectionRef,{text:newEntry,time: new Date()});
         window.location.reload(false);
     }
+    const createEntryWithCat = async() =>{
+        await addDoc(entriesCollectionRef,{text:"Kotek!",time: new Date()});
+        window.location.reload(false);
+    }
 
     return(
         <Box >
             <textarea style={{maxWidth:'95%',marginTop:5}} rows="4" color='50' placeholder='entry...' onChange={(event)=>{setNewEntry(event.target.value);}}/>
             <button onClick={createEntry}>Save</button>
+            <button onClick={createEntryWithCat}>kotek</button>
         </Box>
     );
 }
